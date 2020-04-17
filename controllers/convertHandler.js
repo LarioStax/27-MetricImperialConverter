@@ -28,17 +28,18 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
   	let inputUnit;
-  	if (input.indexOf("km") != -1) {
+  	let inputLowerCase = input.toLowerCase();
+  	if (inputLowerCase.indexOf("km") != -1) {
   		inputUnit = "km";
-  	} else if (input.indexOf("mi") != -1) {
+  	} else if (inputLowerCase.indexOf("mi") != -1) {
   		inputUnit = "mi";
-  	} else if (input.indexOf("gal") != -1) {
+  	} else if (inputLowerCase.indexOf("gal") != -1) {
   		inputUnit = "gal";
-  	} else if (input.indexOf("L") != -1) {
-  		inputUnit = "L";
-  	} else if (input.indexOf("kg") != -1) {
+  	} else if (inputLowerCase.indexOf("L") != -1) {
+  		inputUnit = "l";
+  	} else if (inputLowerCase.indexOf("kg") != -1) {
   		inputUnit = "kg";
-  	} else if (input.indexOf("lbs") != -1) {
+  	} else if (inputLowerCase.indexOf("lbs") != -1) {
   		inputUnit = "lbs";
   	} else {
   		inputUnit = "Invalid unit";
