@@ -15,29 +15,49 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
-  	let result;
+  	let inputUnit;
   	if (input.indexOf("km") != -1) {
-  		result = "km";
+  		inputUnit = "km";
   	} else if (input.indexOf("mi") != -1) {
-  		result = "mi";
+  		inputUnit = "mi";
   	} else if (input.indexOf("gal") != -1) {
-  		result = "gal";
+  		inputUnit = "gal";
   	} else if (input.indexOf("L") != -1) {
-  		result = "L";
+  		inputUnit = "L";
   	} else if (input.indexOf("kg") != -1) {
-  		result = "kg";
+  		inputUnit = "kg";
   	} else if (input.indexOf("lbs") != -1) {
-  		result = "lbs";
+  		inputUnit = "lbs";
   	} else {
-  		result = "Invalid unit";
+  		inputUnit = "Invalid unit";
   	}
-    return result;
+    return inputUnit;
   };
   
   this.getReturnUnit = function(initUnit) {
-    var result;
+    var returnUnit;
+    switch (initUnit) {
+    	case "km":
+	    	returnUnit = "mi";
+	    	break;
+    	case "mi":
+	    	returnUnit = "km";
+	    	break;
+    	case "gal":
+	    	returnUnit = "L";
+	    	break;
+    	case "L":
+	    	returnUnit = "gal";
+	    	break;
+    	case "kg":
+	    	returnUnit = "lbs";
+	    	break;
+    	case "lbs":
+	    	returnUnit = "kg";
+	    	break;
+    }
     
-    return result;
+    return returnUnit;
   };
 
   this.spellOutUnit = function(unit) {
