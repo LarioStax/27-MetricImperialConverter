@@ -3,8 +3,11 @@ const app = express();
 const bodyParser = require("body-parser");
 const chai = require("chai");
 const expect = chai.expect;
+const dotenv = require("dotenv").config();
 
 const routes = require("./routes/api.js");
+const runner = require("./test-runner");
+const fccTestingRoutes = require("./routes/fcctesting.js");
 
 
 const cors = require("cors");
