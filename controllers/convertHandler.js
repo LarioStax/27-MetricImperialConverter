@@ -9,8 +9,8 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
+  	let inputNumber;
   	if (input) {
-	  	let inputNumber;
 	  	let inputString = input;
 	  	let regex = /[a-zA-Z]+/ //regex to match all leters
 	    let inputNumberAsString = inputString.replace(regex, "");
@@ -23,14 +23,17 @@ function ConvertHandler() {
 	    	}
 	    }
 	    
-	    inputNumber = eval(inputNumberAsString) || 1;
+	    inputNumber = eval(inputNumberAsString);
 	    return Number(inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));  		
+  	} else {
+  		inputNumber = 1;
+  		return inputNumber;
   	}
   };
   
   this.getUnit = function(input) {
+  	let inputUnit;
   	if (input) {
-	  	let inputUnit;
 	  	let inputLowerCase = input.toLowerCase();
 	  	if (inputLowerCase.indexOf("km") != -1) {
 	  		inputUnit = "km";
@@ -44,11 +47,12 @@ function ConvertHandler() {
 	  		inputUnit = "gal";
 	  	} else if (inputLowerCase.indexOf("l") != -1) {
 	  		inputUnit = "l";
-	  	} else {
-	  		inputUnit = "Invalid unit";
-	  	}
+	  	} 
 	    return inputUnit;  		
-  	}
+  	}	else {
+	  	inputUnit = "Invalid unit";
+	  	return inputUnit;
+	  }
 
   };
   
