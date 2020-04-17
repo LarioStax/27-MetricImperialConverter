@@ -9,10 +9,20 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
+  	let inputNumber;
   	let inputString = input;
-  	let regex = /[a-zA-Z]+/
+  	let regex = /[a-zA-Z]+/ //regex to match all leters
     let inputNumberAsString = inputString.replace(regex, "");
-    let inputNumber = eval(inputNumberAsString) || 1;
+    
+    try {
+    	eval(inputNumberAsString);
+    } catch (error) {
+    	if (error instanceof SyntaxError) {
+    		return inputNumber = "Invalid number";
+    	}
+    }
+    
+    inputNumber = eval(inputNumberAsString) || 1;
     return inputNumber;
   };
   
