@@ -10,11 +10,13 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
   	let inputNumber;
-  	if (input) {
-	  	let inputString = input;
-	  	let regex = /[a-zA-Z]+/ //regex to match all leters
-	    let inputNumberAsString = inputString.replace(regex, "");
-	    
+  	let inputString = input;
+	  let regex = /[a-zA-Z]+/ //regex to match all leters
+	  let inputNumberAsString = inputString.replace(regex, "");
+	  if (Number(inputNumberAsString) === 0) {
+  		inputNumber = "Invalid number";
+  		return inputNumber;
+  	} else if (inputNumberAsString) {
 	    try {
 	    	eval(inputNumberAsString);
 	    } catch (error) {
@@ -23,12 +25,9 @@ function ConvertHandler() {
 	    	}
 	    }
 	    
-	    inputNumber = eval(inputNumberAsString);
+	    inputNumber = eval(inputNumberAsString) || 1;
 	    return Number(inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));  		
-  	} else {
-  		inputNumber = 1;
-  		return inputNumber;
-  	}
+  	} 
   };
   
   this.getUnit = function(input) {
