@@ -9,42 +9,47 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-  	let inputNumber;
-  	let inputString = input;
-  	let regex = /[a-zA-Z]+/ //regex to match all leters
-    let inputNumberAsString = inputString.replace(regex, "");
-    
-    try {
-    	eval(inputNumberAsString);
-    } catch (error) {
-    	if (error instanceof SyntaxError) {
-    		return inputNumber = "Invalid number";
-    	}
-    }
-    
-    inputNumber = eval(inputNumberAsString) || 1;
-    return Number(inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));
+  	if (input) {
+	  	let inputNumber;
+	  	let inputString = input;
+	  	let regex = /[a-zA-Z]+/ //regex to match all leters
+	    let inputNumberAsString = inputString.replace(regex, "");
+	    
+	    try {
+	    	eval(inputNumberAsString);
+	    } catch (error) {
+	    	if (error instanceof SyntaxError) {
+	    		return inputNumber = "Invalid number";
+	    	}
+	    }
+	    
+	    inputNumber = eval(inputNumberAsString) || 1;
+	    return Number(inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));  		
+  	}
   };
   
   this.getUnit = function(input) {
-  	let inputUnit;
-  	let inputLowerCase = input.toLowerCase();
-  	if (inputLowerCase.indexOf("km") != -1) {
-  		inputUnit = "km";
-  	} else if (inputLowerCase.indexOf("mi") != -1) {
-  		inputUnit = "mi";
-  	}  else if (inputLowerCase.indexOf("kg") != -1) {
-  		inputUnit = "kg";
-  	} else if (inputLowerCase.indexOf("lbs") != -1) {
-  		inputUnit = "lbs";
-  	} else if (inputLowerCase.indexOf("gal") != -1) {
-  		inputUnit = "gal";
-  	} else if (inputLowerCase.indexOf("l") != -1) {
-  		inputUnit = "l";
-  	} else {
-  		inputUnit = "Invalid unit";
+  	if (input) {
+	  	let inputUnit;
+	  	let inputLowerCase = input.toLowerCase();
+	  	if (inputLowerCase.indexOf("km") != -1) {
+	  		inputUnit = "km";
+	  	} else if (inputLowerCase.indexOf("mi") != -1) {
+	  		inputUnit = "mi";
+	  	}  else if (inputLowerCase.indexOf("kg") != -1) {
+	  		inputUnit = "kg";
+	  	} else if (inputLowerCase.indexOf("lbs") != -1) {
+	  		inputUnit = "lbs";
+	  	} else if (inputLowerCase.indexOf("gal") != -1) {
+	  		inputUnit = "gal";
+	  	} else if (inputLowerCase.indexOf("l") != -1) {
+	  		inputUnit = "l";
+	  	} else {
+	  		inputUnit = "Invalid unit";
+	  	}
+	    return inputUnit;  		
   	}
-    return inputUnit;
+
   };
   
   this.getReturnUnit = function(initUnit) {
@@ -126,15 +131,19 @@ function ConvertHandler() {
 	    case "l":
 	    	returnNum = initNum/galToL;
 	    	break;
+	    default:
+	    	return;
     }
     
     return Number(returnNum.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    let fullString = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}` ;
-    
-    return fullString;
+  	if (initNum && initUnit && returnNum && returnUnit) {
+  		let fullString = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+    	return fullString;
+  	}
+
   };
   
 }
