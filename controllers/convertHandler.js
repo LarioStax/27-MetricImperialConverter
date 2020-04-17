@@ -117,7 +117,7 @@ function ConvertHandler() {
 	    	break;
     }
     
-    return returnNum;
+    return returnNum.toFixed(5).replace(/0+$/, "").replace(/\.$/, "");
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
