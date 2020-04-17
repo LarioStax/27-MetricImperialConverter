@@ -9,14 +9,28 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    var result;
+    let result;
     
     return result;
   };
   
   this.getUnit = function(input) {
-    var result;
-    
+  	let result;
+  	if (input.indexOf("km") != -1) {
+  		result = "km";
+  	} else if (input.indexOf("mi") != -1) {
+  		result = "mi";
+  	} else if (input.indexOf("gal") != -1) {
+  		result = "gal";
+  	} else if (input.indexOf("L") != -1) {
+  		result = "L";
+  	} else if (input.indexOf("kg") != -1) {
+  		result = "kg";
+  	} else if (input.indexOf("lbs") != -1) {
+  		result = "lbs";
+  	} else {
+  		result = "Invalid unit";
+  	}
     return result;
   };
   

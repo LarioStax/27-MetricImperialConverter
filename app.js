@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const chai = require("chai");
 const expect = chai.expect;
 
+const routes = require("./routes/api.js");
+
 
 const cors = require("cors");
 app.use(cors());
@@ -15,6 +17,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get("/", function(req, res) {
 	res.sendFile(process.cwd() + "/views/index.html");
 })
+
+routes(app);
 
 const port = process.env.PORT || 3000;
 app.listen(port, function() {
