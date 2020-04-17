@@ -33,14 +33,14 @@ function ConvertHandler() {
   		inputUnit = "km";
   	} else if (inputLowerCase.indexOf("mi") != -1) {
   		inputUnit = "mi";
-  	} else if (inputLowerCase.indexOf("gal") != -1) {
-  		inputUnit = "gal";
-  	} else if (inputLowerCase.indexOf("L") != -1) {
-  		inputUnit = "l";
-  	} else if (inputLowerCase.indexOf("kg") != -1) {
+  	}  else if (inputLowerCase.indexOf("kg") != -1) {
   		inputUnit = "kg";
   	} else if (inputLowerCase.indexOf("lbs") != -1) {
   		inputUnit = "lbs";
+  	} else if (inputLowerCase.indexOf("gal") != -1) {
+  		inputUnit = "gal";
+  	} else if (inputLowerCase.indexOf("l") != -1) {
+  		inputUnit = "l";
   	} else {
   		inputUnit = "Invalid unit";
   	}
@@ -58,9 +58,9 @@ function ConvertHandler() {
 	    	returnUnit = "km";
 	    	break;
     	case "gal":
-	    	returnUnit = "L";
+	    	returnUnit = "l";
 	    	break;
-    	case "L":
+    	case "l":
 	    	returnUnit = "gal";
 	    	break;
     	case "kg":
@@ -87,7 +87,7 @@ function ConvertHandler() {
     	case "gal":
 	    	fullUnit = "gallons";
 	    	break;
-    	case "L":
+    	case "l":
 	    	fullUnit = "liters";
 	    	break;
     	case "lbs":
@@ -117,14 +117,14 @@ function ConvertHandler() {
     	case "gal":
 	    	returnNum = initNum*galToL;
 	    	break;
-    	case "L":
-	    	returnNum = initNum/galToL;
-	    	break;
     	case "kg":
 	    	returnNum = initNum/lbsToKg;
 	    	break;
     	case "lbs":
 	    	returnNum = initNum*lbsToKg;
+	    	break;
+	    case "l":
+	    	returnNum = initNum/galToL;
 	    	break;
     }
     
