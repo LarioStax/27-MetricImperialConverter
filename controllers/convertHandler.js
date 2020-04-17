@@ -29,17 +29,19 @@ function ConvertHandler() {
   this.getUnit = function(input) {
   	let inputUnit;
   	let inputLowerCase = input.toLowerCase();
-  	if (inputLowerCase.indexOf("km") != -1) {
+  	let regex = /[^a-zA-Z]+/ //regex to match all letters
+  	let onlyLetters = inputLowerCase.match(regex).join("");
+  	if (inputLowerCase.indexOf("km") != -1 && onlyLetters.length == 2) {
   		inputUnit = "km";
-  	} else if (inputLowerCase.indexOf("mi") != -1) {
+  	} else if (inputLowerCase.indexOf("mi") != -1 && onlyLetters.length == 2) {
   		inputUnit = "mi";
-  	}  else if (inputLowerCase.indexOf("kg") != -1) {
+  	}  else if (inputLowerCase.indexOf("kg") != -1 && onlyLetters.length == 2) {
   		inputUnit = "kg";
-  	} else if (inputLowerCase.indexOf("lbs") != -1) {
+  	} else if (inputLowerCase.indexOf("lbs") != -1 && onlyLetters.length == 3) {
   		inputUnit = "lbs";
-  	} else if (inputLowerCase.indexOf("gal") != -1) {
+  	} else if (inputLowerCase.indexOf("gal") != -1 && onlyLetters.length == 3) {
   		inputUnit = "gal";
-  	} else if (inputLowerCase.indexOf("l") != -1) {
+  	} else if (inputLowerCase.indexOf("l") != -1 && onlyLetters.length == 1) {
   		inputUnit = "l";
   	} else {
   		inputUnit = "Invalid unit";
