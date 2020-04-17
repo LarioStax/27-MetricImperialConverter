@@ -23,7 +23,7 @@ function ConvertHandler() {
     }
     
     inputNumber = eval(inputNumberAsString) || 1;
-    return inputNumber;
+    return inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, "");
   };
   
   this.getUnit = function(input) {
