@@ -29,8 +29,13 @@ function ConvertHandler() {
   this.getUnit = function(input) {
   	let inputUnit;
   	let inputLowerCase = input.toLowerCase();
-  	let regex = /[^a-zA-Z]+/ //regex to match all letters
-  	let onlyLetters = inputLowerCase.match(regex).join("");
+  	let regex = /[a-zA-Z]+/ //regex to match all letters
+  	
+  	let onlyLetters;
+  	if (inputLowerCase.length > 0) {
+  		onlyLetters = inputLowerCase.match(regex).join("");
+  	}
+
   	if (inputLowerCase.indexOf("km") != -1 && onlyLetters.length == 2) {
   		inputUnit = "km";
   	} else if (inputLowerCase.indexOf("mi") != -1 && onlyLetters.length == 2) {
