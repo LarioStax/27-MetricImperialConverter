@@ -24,7 +24,6 @@ suite('Functional Tests', function() {
         .get('/api/convert')
         .query({input: '10L'})
         .end(function(err, res){
-         console.log("jesus fuck")
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 10);
           assert.equal(res.body.initUnit, 'l');
@@ -35,23 +34,54 @@ suite('Functional Tests', function() {
       });
       
       test('Convert 32g (invalid input unit)', function(done) {
-        
-        //done();
+       chai.request(server)
+        .get('/api/convert')
+        .query({input: '32g'})
+        .end(function(err, res){
+          assert.equal(res.status, 200);
+          assert.equal(res.body.initUnit, 'Invalid unit');
+          done();
+        });
       });
       
-      test('Convert 3/7.2/4kg (invalid number)', function(done) {
-        
-        //done();
-      });  
+      test('Convert 3/7.2/4kg (invalid number)', function(done) { //WHY IS THIS SUPPOSED TO BE INVALID? DOUBLE FRACTION IS A VALID NUMBER
+       chai.request(server)
+        .get('/api/convert')
+        .query({input: '3/7.2/4kg'})
+        .end(function(err, res){
+          assert.equal(res.status, 200);
+          assert.equal(res.body.initNum, 0.10417);
+          assert.equal(res.body.initUnit, 'kg');
+          assert.approximately(res.body.returnNum, 0.22966, 0.1);
+          assert.equal(res.body.returnUnit, 'lbs');
+          done();
+      	});  
+      });
       
-      test('Convert 3/7.2/4kilomegagram (invalid number and unit)', function(done) {
-        
-        //done();
+      test('Convert 3.7.2/4kilomegagram (invalid number and unit)', function(done) {
+       chai.request(server)
+        .get('/api/convert')
+        .query({input: '3.7.2/4kilomegagram'})
+        .end(function(err, res){
+          assert.equal(res.status, 200);
+          assert.equal(res.body.initNum, "Invalid number");
+          assert.equal(res.body.initUnit, "Invalid unit");
+          done();
+      	});  
       });
       
       test('Convert kg (no number)', function(done) {
-        
-        //done();
+       chai.request(server)
+        .get('/api/convert')
+        .query({input: 'kg'})
+        .end(function(err, res){
+          assert.equal(res.status, 200);
+          assert.equal(res.body.initNum, 1);
+          assert.equal(res.body.initUnit, 'kg');
+          assert.approximately(res.body.returnNum, 2.20462, 0.1);
+          assert.equal(res.body.returnUnit, 'lbs');
+          done();
+        });
       });
       
     });
