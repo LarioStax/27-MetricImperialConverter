@@ -11,6 +11,7 @@ function ConvertHandler() {
   this.getNum = function(input) {
   	let inputNumber;
   	let inputString = input;
+<<<<<<< HEAD
 	  let regex = /[a-zA-Z]+/ //regex to match all leters
 	  let inputNumberAsString = inputString.replace(regex, "");
 	  if (Number(inputNumberAsString) === 0) {
@@ -28,6 +29,21 @@ function ConvertHandler() {
 	    inputNumber = eval(inputNumberAsString) || 1;
 	    return Number(inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));  		
   	} 
+=======
+  	let regex = /[a-zA-Z]+/ //regex to match all leters
+    let inputNumberAsString = inputString.replace(regex, "");
+    
+    try {
+    	eval(inputNumberAsString);
+    } catch (error) {
+    	if (error instanceof SyntaxError) {
+    		return inputNumber = "Invalid number";
+    	}
+    }
+    
+    inputNumber = eval(inputNumberAsString) || 1;
+    return inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, "");
+>>>>>>> parent of 605fbda... Cast inputNum and returnNum to number (from string)
   };
   
   this.getUnit = function(input) {
@@ -138,7 +154,7 @@ function ConvertHandler() {
 	    	return;
     }
     
-    return Number(returnNum.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));
+    return returnNum.toFixed(5).replace(/0+$/, "").replace(/\.$/, "");
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
