@@ -23,7 +23,7 @@ function ConvertHandler() {
     }
     
     inputNumber = eval(inputNumberAsString) || 1;
-    return inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, "");
+    return Number(inputNumber.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));
   };
   
   this.getUnit = function(input) {
@@ -128,7 +128,7 @@ function ConvertHandler() {
 	    	break;
     }
     
-    return returnNum.toFixed(5).replace(/0+$/, "").replace(/\.$/, "");
+    return Number(returnNum.toFixed(5).replace(/0+$/, "").replace(/\.$/, ""));
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
