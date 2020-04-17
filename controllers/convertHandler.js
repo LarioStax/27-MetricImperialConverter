@@ -64,9 +64,30 @@ function ConvertHandler() {
   };
 
   this.spellOutUnit = function(unit) {
-    var result;
-    
-    return result;
+    let fullUnit;
+
+    switch (unit) {
+    	case "km":
+	    	fullUnit = "kilometers";
+	    	break;
+    	case "mi":
+	    	fullUnit = "miles";
+	    	break;
+    	case "gal":
+	    	fullUnit = "gallons";
+	    	break;
+    	case "L":
+	    	fullUnit = "liters";
+	    	break;
+    	case "lbs":
+	    	fullUnit = "pounds";
+	    	break;
+    	case "kg":
+	    	fullUnit = "kilograms";
+	    	break;
+    }
+
+    return fullUnit;
   };
   
   this.convert = function(initNum, initUnit) {
@@ -100,9 +121,9 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result;
+    let fullString = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}` ;
     
-    return result;
+    return fullString;
   };
   
 }
