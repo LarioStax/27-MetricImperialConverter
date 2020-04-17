@@ -9,9 +9,11 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    let result;
-    
-    return result;
+  	let inputString = input;
+  	let regex = /[a-zA-Z]+/
+    let inputNumberAsString = inputString.replace(regex, "");
+    let inputNumber = eval(inputNumberAsString) || 1;
+    return inputNumber;
   };
   
   this.getUnit = function(input) {
@@ -35,7 +37,8 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
-    var returnUnit;
+    let returnUnit;
+
     switch (initUnit) {
     	case "km":
 	    	returnUnit = "mi";
@@ -70,9 +73,9 @@ function ConvertHandler() {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-    var result;
-    
-    return result;
+    let returnNum;
+
+    return returnNum;
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
